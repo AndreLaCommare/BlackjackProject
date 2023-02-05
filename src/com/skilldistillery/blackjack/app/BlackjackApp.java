@@ -50,11 +50,13 @@ public class BlackjackApp {
 			if (!(playerHand.isBlackjack()) && dealerHand.isBlackjack()) {
 				notStaying = false;
 				System.out.println("Dealer has Blackjack. Better luck next time.");
+				dealerHand.displayFullDealerHand();
 			}
 
 			if (playerHand.isBlackjack() && dealerHand.isBlackjack()) {
 				notStaying = false;
 				System.out.println("You both have Blackjack. A push is  a win. Congrats.");
+				dealerHand.displayFullDealerHand();
 
 			}
 
@@ -68,7 +70,7 @@ public class BlackjackApp {
 						System.out.println("You busted!");
 						notStaying = false;
 					}
-					if (playerHand.isBlackjack()) {
+					if (playerHand.getHandValue() == 21) {
 						System.out.println("You have 21!");
 						notStaying = false;
 					}
@@ -80,7 +82,7 @@ public class BlackjackApp {
 
 			}
 
-			while (dealerHand.getHandValue() < 17 && (!(playerHand.isBust()))) {
+			while (dealerHand.getHandValue() < 17 && !(playerHand.isBust()) && !(playerHand.isBlackjack())) {
 				System.out.println("The dealer must hit less than 17. The dealer hits.");
 				dealerHand.addCard(blackJackDeck.dealCard());
 

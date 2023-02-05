@@ -8,7 +8,7 @@ public class BlackjackHand extends Hand {
 
 	@Override
 	public boolean isBlackjack() {
-		if (getHandValue() == 21) {
+		if (getHandValue() == 21 && handOfCards.size() == 2) {
 			return true;
 		} else {
 			return false;
@@ -26,12 +26,23 @@ public class BlackjackHand extends Hand {
 
 	public int getHandValue() {
 		int sum = 0;
+		int aces = 0;
 		for (int i = 0; i < handOfCards.size(); i++) {
 			Card currentCard = handOfCards.get(i);
+			if (currentCard.getValue() == 11) {
+				aces++;
+			}
 			sum += currentCard.getValue();
+		}
+		while (aces > 0) {
+			if (sum > 21) {
+				sum -= 10;
+			}
+			aces--;
 		}
 		return sum;
 	}
+
 	@Override
 	public void displayPlayerHand() {
 		// TODO Auto-generated method stub
@@ -41,6 +52,7 @@ public class BlackjackHand extends Hand {
 		}
 		System.out.println();
 	}
+
 	@Override
 	public void displayDealerHand() {
 		// TODO Auto-generated method stub
@@ -51,6 +63,7 @@ public class BlackjackHand extends Hand {
 		}
 		System.out.println();
 	}
+
 	@Override
 	public void displayFullDealerHand() {
 		// TODO Auto-generated method stub
@@ -60,6 +73,5 @@ public class BlackjackHand extends Hand {
 		}
 		System.out.println();
 	}
-	
-	
+
 }
