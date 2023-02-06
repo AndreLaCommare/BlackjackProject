@@ -12,18 +12,11 @@ public class BlackjackApp {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		BlackjackApp bjA = new BlackjackApp();
-		bjA.run();
+		bjA.runGame();
 	}
 
-	public void run() {
-		game();
-	}
-
-	public void game() {
+	public void runGame() {
 		boolean wantToPlay = true;
-//		for(Card card : blackJackDeck.getDeck()) {
-//			System.out.println(card.toString());
-//		}
 		while (wantToPlay) {
 			Deck blackJackDeck = new Deck();
 
